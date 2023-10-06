@@ -13,6 +13,8 @@ cd cat
 
 Download (i) the modified version of MetaDrive to maneuver and display adversarial traffic in simulations  and (ii) the pre-trained DenseTNT model as the traffic prior in the safety-critical resampling. [Link](https://drive.google.com/drive/folders/1xVQ84pF5clVtKw6d4NCC-0mYbo4cIZ_a)
 
+Place `densetnt.bin `  into the `./advgen/pretrained` folder.
+
 Finally, install dependencies via
 
 ```bash
@@ -65,7 +67,7 @@ Run the following script to visualize the learning curves about route completion
 ./scripts/plot.sh
 ```
 
-Log files for testing the refactored codebase are placed in the ./testlogs folder. 
+Log files for testing the refactored codebase are placed in the `./testlogs` folder. 
 
 ## Reference
 
