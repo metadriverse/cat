@@ -13,7 +13,17 @@ cd cat
 
 Download (i) the modified version of MetaDrive to maneuver and display adversarial traffic in simulations  and (ii) the pre-trained DenseTNT model as the traffic prior in the safety-critical resampling. [Link](https://drive.google.com/drive/folders/1xVQ84pF5clVtKw6d4NCC-0mYbo4cIZ_a)
 
-Place `densetnt.bin `  into the `./advgen/pretrained` folder.
+Place `densetnt.bin `  into the `./advgen/pretrained` folder. Your directory structure should look something like this:
+
+```
+cat
+└── advgen
+    └── pretrained
+    	└── densetnt.bin    
+└── metadrive
+└── license
+...
+```
 
 Finally, install dependencies via
 
