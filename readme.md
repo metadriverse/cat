@@ -1,6 +1,6 @@
 # CAT: Closed-loop Adversarial Training for Safe End-to-End Driving
 
-[***\*Webpage\****](https://metadriverse.github.io/cat/) | [***\*Code\****](https://github.com/metadriverse/cat) |[***\*Paper\****](https://openreview.net/pdf?id=VtJqMs9ig20)
+[**Webpage**](https://metadriverse.github.io/cat/) | [**Code**](https://github.com/metadriverse/cat) |[**Paper**](https://openreview.net/pdf?id=VtJqMs9ig20)
 
 ## Set Up
 
