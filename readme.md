@@ -38,7 +38,7 @@ python scripts/covert_WOMD_to_MD.py
 Third, select scenarios that lasts 9.1 seconds and contains 2 vehicles labeled as Objects of Interest (one is the ego vehicle, the other is designated as the opponent vehicle). Currently, CAT supports 1 ego + 1 opponent + n other vehicles in one scenario.
 
 ```
-python select_cases.py
+python scripts/select_cases.py
 ```
 
 ## Visualize the safety-critical scenario generation
