@@ -1,10 +1,6 @@
 # CAT: Closed-loop Adversarial Training for Safe End-to-End Driving
 
-[***\*Webpage\****](https://metadriverse.github.io/cat/) | 
-
-[***\*Code\****](https://github.com/metadriverse/cat) |
-
-[***\*Paper\****](https://openreview.net/pdf?id=VtJqMs9ig20)
+[***\*Webpage\****](https://metadriverse.github.io/cat/) | [***\*Code\****](https://github.com/metadriverse/cat) |[***\*Paper\****](https://openreview.net/pdf?id=VtJqMs9ig20)
 
 ## Set Up
 
@@ -31,7 +27,7 @@ We use Waymo Open Motion Dataset (WOMD) v1.1 as raw traffic scenarios and provid
 
 If you want to use other cases, please follow the tutorial below.
 
-First, download tfrecord files from the WOMD **validation/test_interactive** folder. [Link](https://console.cloud.google.com/storage/browser/waymo_open_dataset_motion_v_1_1_0/uncompressed/scenario;tab=objects?prefix=&forceOnObjectsSortingFiltering=false&pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))
+First, download tfrecord files from the WOMD **validation/testing_interactive** folder. [Link](https://console.cloud.google.com/storage/browser/waymo_open_dataset_motion_v_1_1_0/uncompressed/scenario)
 
 Second, run the script to convert them to MetaDrive scenario descriptions.
 
