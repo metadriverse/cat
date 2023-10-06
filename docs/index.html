@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+
+<!-- === Header Starts === -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> CAT: Closed-loop Adversarial Training for Safe End-to-End Driving</title>
+    <link href="./assets/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/font.css" rel="stylesheet" type="text/css">
+    <link href="./assets/style.css" rel="stylesheet" type="text/css">
+    <script src="./assets/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/corpus.js"></script>
+
+</head>
+<!-- === Header Ends === -->
+
+<script>
+    var lang_flag = 1;
+
+
+
+</script>
+
+<body>
+
+<!-- === Home Section Starts === -->
+<div class="section" style="margin-top: 15pt">
+    <!-- === Title Starts === -->
+    <div class="header">
+        <!--        <div class="logo">-->
+        <!--            <a href="https://decisionforce.github.io/" target="_blank">-->
+        <!--                <img src="images/deciforce.png">-->
+        <!--            </a>-->
+        <!--        </div>-->
+        <!--        <div style="padding-top: 30pt; margin: 0 50pt;" class="title" id="lang">-->
+        <!--            Safe Driving via Expert Guided Policy Optimization-->
+        <!--        </div>-->
+
+        <table>
+            <tr>
+                <td>
+                    <div style="padding-top: 20pt;padding-left: 160pt;padding-bottom: 12pt" class="title" id="lang">
+                        <b> CAT: Closed-loop Adversarial Training for <br>
+                            Safe End-to-End Driving </b>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+    <!-- === Title Ends === -->
+    <div class="author">
+        <p style="text-align:center">7th Annual Conference on Robot Learning (CoRL 2023) </p>
+        <a href="#" target="_blank">Linrui Zhang</a><sup>1</sup>,
+        <a href="https://pengzhenghao.github.io" target="_blank">Zhenghao Peng</a><sup>2</sup>,&nbsp;&nbsp;
+        <a href="https://Quanyili.github.io">Quanyi Li</a><sup>3</sup>,&nbsp;
+        <a href="https://boleizhou.github.io/" target="_blank">Bolei Zhou</a><sup>2</sup>&nbsp;
+
+    </div>
+
+    <div class="institution" style="font-size: 11pt;">
+        <div>
+            <sup>1</sup>Tsinghua University,
+            <sup>2</sup>University of California, Los Angeles,
+            <sup>3</sup>University of Edinburgh
+        </div>
+    </div>
+    <table border="0" align="center">
+        <tr>
+            <td align="center" style="padding: 0pt 0 15pt 0">
+                <a class="bar" href="https://metadriverse.github.io/cat/"><b>Webpage</b></a> |
+<!--                <a class="bar" href="https://github.com/metadriverse/policydissect"><b>Code</b></a> |-->
+<!--                <a class="bar" href="https://youtu.be/jPS93-d6msM"><b>Video</b></a> |-->
+                <a class="bar" href="https://github.com/metadriverse/safety-cat"><b>Code</b></a> |
+                <a class="bar" href="https://openreview.net/pdf?id=VtJqMs9ig20"><b>Paper</b></a>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+
+<!-- === Overview Section Starts === -->
+<div class="section">
+    <div class="title" id="method">Overview</div>
+    <div class="body">
+        <div class="teaser">
+            <img src="assets/overview.png">
+            <div class="text">
+                <br>
+                Fig. 1 Overview of the proposed method.
+            </div>
+        </div>
+        <div class="text">
+            <p>
+                This work introduces the Closed-loop Adversarial Training (CAT) framework for safe end-to-end driving.
+                CAT imports normal driving scenarios from real-world driving logs and then generates safety-critical counterparts as adversarial training 
+                environments tailored to the current driving policy. The agent continuously learns to address emerging challenges and improves risk awareness 
+                in a closed-loop pipeline. After training, the agent can achieve superior driving safety in both normal and safety-critical traffic scenarios 
+                on the held-out test set.
+            </p>
+
+        </div>
+<!--    </div>
+</div>
+
+<div class="section">
+    <div class="title" id="method">Factorized Safety-Critical Resampling </div>
+    <div class="body"> -->
+        <div class="teaser">
+            <img src="assets/resampling.png">
+            <div class="text">
+                <br>
+                Fig. 2 llustration of Factorized Safety-Critical Resampling.
+            </div>
+        </div>
+        <div class="text">
+            <p>
+                One crucial component of the proposed framework is a novel factorized safety-critical resampling technique that efficiently turns normal 
+                driving scenarios into safety-critical ones during training. Specifically, we cast the safety-critical traffic generation as the risk-conditioned 
+                Bayesian probability maximization and then decompose it into the multiplication of standard motion forecasting sub-problems. Thus, we can utilize 
+                off-the-shelf motion forecasting models as the learned prior to generate adversarial scenarios with high fidelity, diversity, and efficiency. 
+                Compared to previous safety-critical traffic generation methods, the proposed technique obtains a competitive attack success rate while significantly 
+                reducing the computational cost (generally less than 1s), making the CAT framework effective and efficient for closed-loop end-to-end driving policy training.
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="title" id="method">How CAT Generates Adversarial Scenarios</div>
+    <div class="body">
+        <div class="text">
+            <p>
+            Case 1: In the raw scenario, the blue car keeps going straight. After CAT generation, it turns left at the intersection.
+            </p>
+        </div>
+        <table>
+            <tr>
+            <td>
+                <div class="teaser">
+                <img src=assets/advgen/demoRaw_60.gif width="185" border=0>
+                <div class="text">
+                    <br>
+                    Raw scenario
+                </div>
+            </td>
+            <td>
+                <div class="teaser">
+                    <img src=assets/advgen/demoAdv_60.gif width="185" border=0>
+                    <div class="text">
+                        <br>
+                        Generated scenario
+                </div>
+            </td>
+            </tr>
+        </table>
+
+
+        <div class="text">
+            <p>
+            Case 2: In the raw scene, the blue car drives inside the roundabout. After CAT generation, it runs out of the roundabout.
+            </p>
+        </div>
+        <table>
+            <tr>
+            <td>
+                <div class="teaser">
+                <img src=assets/advgen/demoRaw_103.gif width="185" border=0>
+                <div class="text">
+                    <br>
+                    Raw scenario
+                </div>
+            </td>
+            <td>
+                <div class="teaser">
+                    <img src=assets/advgen/demoAdv_103.gif width="185" border=0>
+                    <div class="text">
+                        <br>
+                        Generated scenario
+                </div>
+            </td>
+            </tr>
+        </table>
+
+        <div class="text">
+            <p>
+            Case 3: In the raw scene, the blue car changes the lane gently. After CAT generation, it suddenly changes the lane.
+            </p>
+        </div>
+        <table>
+            <tr>
+            <td>
+                <div class="teaser">
+                <img src=assets/advgen/demoRaw_5.gif width="185" border=0>
+                <div class="text">
+                    <br>
+                    Raw scenario
+                </div>
+            </td>
+            <td>
+                <div class="teaser">
+                    <img src=assets/advgen/demoAdv_5.gif width="185" border=0>
+                    <div class="text">
+                        <br>
+                        Generated scenario
+                </div>
+            </td>
+            </tr>
+        </table>
+
+
+        <div class="text">
+            <p>
+            Case 4: In the raw scene, the blue car drive normally on the highway. After CAT generation, it brakes suddenly due to a malfunction.
+            </p>
+        </div>
+        <table>
+            <tr>
+            <td>
+                <div class="teaser">
+                <img src=assets/advgen/demoRaw_2.gif width="185" border=0>
+                <div class="text">
+                    <br>
+                    Raw scenario
+                </div>
+            </td>
+            <td>
+                <div class="teaser">
+                    <img src=assets/advgen/demoAdv_2.gif width="185" border=0>
+                    <div class="text">
+                        <br>
+                        Generated scenario
+                </div>
+            </td>
+            </tr>
+        </table>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="section">
+    <div class="title" id="method">How CAT Enhances AI Driving Safety </div>
+    <div class="body">
+        <div class="text">
+            <p>
+            Case 1: A car makes an unprotected left turn at an intersection. The CAT agent learns to stay away from potentially dangerous vehicles.
+            </p>
+        </div>
+        <table>
+            <tr>
+            <td>
+                <div class="teaser">
+                <img src=assets/RL/demo_29_nocat.gif width="185" border=0>
+                <div class="text">
+                    <br>
+                    Before CAT
+                </div>
+            </td>
+            <td>
+                <div class="teaser">
+                    <img src=assets/RL/demo_29_cat.gif width="185" border=0>
+                    <div class="text">
+                        <br>
+                        After CAT
+                </div>
+            </td>
+            </tr>
+        </table>
+
+
+        <div class="text">
+            <p>
+                Case 2: The leading car slows down. The CAT agent learns to change its lane and overtake that vehicle.
+            </p>
+        </div>
+        <table>
+            <tr>
+            <td>
+                <div class="teaser">
+                <img src=assets/RL/demo_198_nocat.gif width="185" border=0>
+                <div class="text">
+                    <br>
+                    Before CAT
+                </div>
+            </td>
+            <td>
+                <div class="teaser">
+                    <img src=assets/RL/demo_198_cat.gif width="185" border=0>
+                    <div class="text">
+                        <br>
+                        After CAT
+                </div>
+            </td>
+            </tr>
+        </table>
+
+        <div class="text">
+            <p>
+                Case 3: The leading car cuts into the lane suddenly. The CAT agent learns to yield and change its lane ahead of time.
+            </p>
+        </div>
+        <table>
+            <tr>
+            <td>
+                <div class="teaser">
+                <img src=assets/RL/demo_230_nocat.gif width="185" border=0>
+                <div class="text">
+                    <br>
+                    Before CAT
+                </div>
+            </td>
+            <td>
+                <div class="teaser">
+                    <img src=assets/RL/demo_230_cat.gif width="185" border=0>
+                    <div class="text">
+                        <br>
+                        After CAT
+                </div>
+            </td>
+            </tr>
+        </table>
+
+
+        <div class="text">
+            <p>
+                Case 4: Two vehicles traveling in opposite directions meet. The CAT agents learns to pass by.
+            </p>
+        </div>
+        <table>
+            <tr>
+            <td>
+                <div class="teaser">
+                <img src=assets/RL/demo_265_nocat.gif width="185" border=0>
+                <div class="text">
+                    <br>
+                    Before CAT
+                </div>
+            </td>
+            <td>
+                <div class="teaser">
+                    <img src=assets/RL/demo_265_cat.gif width="185" border=0>
+                    <div class="text">
+                        <br>
+                        After CAT
+                </div>
+            </td>
+            </tr>
+        </table>
+
+        </div>
+    </div>
+</div>
+
+<!-- === Reference Section Starts === -->
+<div class="section">
+    <div class="bibtex">
+        <div class="text">Reference</div>
+    </div>
+    <pre>
+@inproceedings{zhang2023cat,
+  title={CAT: Closed-loop Adversarial Training for Safe End-to-End Driving},
+  author={Zhang, Linrui and Peng, Zhenghao and Li, Quanyi and Zhou, Bolei},
+  booktitle={7th Annual Conference on Robot Learning},
+  year={2023}
+}
+    </pre>
+    <!-- Adjust the frame size based on the demo (Every project differs). -->
+</div>
+
+</body>
+</html>
