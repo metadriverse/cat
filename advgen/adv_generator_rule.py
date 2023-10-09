@@ -417,14 +417,6 @@ class AdvGenerator():
             curve = bezier.Curve(points, degree=3)
             s_vals = np.linspace(0.0, 1.0, _AV_len)
             res = curve.evaluate_multi(s_vals).transpose((1,0))
-
-            # res = curve.evaluate_multi(s_vals)
-            # x33 = res[0]
-            # y33 = res[1]
-            # import matplotlib.pyplot as plt
-            # print(x33.shape)
-            # plt.plot(x33, y33, 'y', linewidth=2.0, linestyle="-", label="y2")
-            # plt.savefig('test.png')
             
             adv_past = self.storage[self.env.current_seed].get('adv_past')
             adv_pos = np.concatenate((adv_past,res,trajs_AV[_AV_len+1:]),axis=0)
@@ -433,7 +425,6 @@ class AdvGenerator():
             
             self.adv_traj = list(np.concatenate((adv_pos,adv_vel,adv_yaw),axis=1))
 
-            #self.adv_traj = np.concatenate((adv_traj,adv_vel,adv_yaw),axis=1)
 
             return traffic_motion_feat,self.adv_traj,trajs_AV,True
 
@@ -445,9 +436,6 @@ class AdvGenerator():
             batch_data = process_data(traffic_motion_feat,self.args)
             pred_trajectory, pred_score, _ = self.model(batch_data[0], 'cuda')
 
-            # debug
-            # trajs_OV = pred_trajectory[1]
-            # return traffic_motion_feat,trajs_OV,trajs_AV
 
             trajs_OV = pred_trajectory[1]
             probs_OV = pred_score[1]
@@ -523,16 +511,10 @@ class AdvGenerator():
                             Intersect([xD,yD,xA,yA],[xG,yG,xH,yH]) or Intersect([xD,yD,xA,yA],[xH,yH,xE,yE]):
                             P3 = 1
 
-                            # print(bbox_OV.astype(np.int))
-                            # raise
                             break
-                            #print(i,j,step,np.linalg.norm([pts1[0]-pts2[0],pts1[1]-pts2[1]]))
-                        #step += 1
 
                     res[j] += P1*P2*P3
 
-            # print(res)
-            # print(min_dist)
 
             if np.any(res):
                 adv_traj_id = np.argmax(res)
@@ -544,8 +526,6 @@ class AdvGenerator():
             adv_yaw = get_polyline_yaw(adv_pos).reshape(-1,1)
             adv_vel = get_polyline_vel(adv_pos)
             self.adv_traj = list(np.concatenate((adv_pos,adv_vel,adv_yaw),axis=1))
-
-            #self.adv_traj = np.concatenate((adv_traj,adv_vel,adv_yaw),axis=1)
 
             return traffic_motion_feat,self.adv_traj,trajs_AV,any(res)
         

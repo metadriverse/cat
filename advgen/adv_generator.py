@@ -399,15 +399,6 @@ class AdvGenerator():
         for k,v in features_description.items():
             features_description[k] = tf.convert_to_tensor(v)
         
-        # with open('combinefeat.pkl','rb') as f:
-        #     import pickle
-        #     features_description = pickle.load(f)
-
-        # with open('myfeat.pkl','wb') as f:
-        #     import pickle
-        #     pickle.dump(features_description,f)
-        # raise
-
         return features_description,adv_agent,ego_navigation_route,adv_past
 
     @property
@@ -507,9 +498,6 @@ class AdvGenerator():
 
                 res[j] += P1*P2*P3
 
-        # print(res)
-        # print(min_dist)
-
         if np.any(res):
             adv_traj_id = np.argmax(res)
         else:
@@ -520,8 +508,6 @@ class AdvGenerator():
         adv_yaw = get_polyline_yaw(adv_pos).reshape(-1,1)
         adv_vel = get_polyline_vel(adv_pos)
         self.adv_traj = list(np.concatenate((adv_pos,adv_vel,adv_yaw),axis=1))
-
-        #self.adv_traj = np.concatenate((adv_traj,adv_vel,adv_yaw),axis=1)
 
         return traffic_motion_feat,self.adv_traj,trajs_AV,any(res)
         
