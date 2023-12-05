@@ -1,6 +1,12 @@
 # CAT: Closed-loop Adversarial Training for Safe End-to-End Driving
 
+**7th Annual Conference on Robot Learning (CoRL 2023)**
+
+
 [**Webpage**](https://metadriverse.github.io/cat/) | [**Code**](https://github.com/metadriverse/cat) |[**Paper**](https://openreview.net/pdf?id=VtJqMs9ig20)
+
+
+
 
 ## Set Up
 
